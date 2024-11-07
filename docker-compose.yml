@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:16.4-alpine3.20
+    container_name: eventostec-postgres
+    environment:
+      POSTGRES_USER: "lucasgabriel"
+      POSTGRES_PASSWORD: "password"
+      POSTGRES_DB: "eventostec"
+    ports:
+      - "5432:5432"
+    volumes:
+      - /data_eventostec_pg_16:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - eventostec
+
+networks:
+  eventostec:
+    driver: bridge
